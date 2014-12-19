@@ -32,10 +32,8 @@ def generate_food_data():
 def main():
 
   nutrition_data = tl.define_limits()
-  # pprint(nutrition_data, depth=4)
   food_data = generate_food_data()
-  # pprint(food_data)
-    tl.generate_tl(nutrition_data, food_data)
+  tl.generate_tl(nutrition_data, food_data)
 
   print "\nFinished\n"
 
