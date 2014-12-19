@@ -54,4 +54,4 @@ class TrafficLight(Resource):
 api.add_resource(TrafficLight, '/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
