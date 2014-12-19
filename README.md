@@ -54,7 +54,7 @@ Alternatively, you can use a REST API
 ```
 
 # Get the Flask server running
-$ ./flask_api.py
+$ ./tl_api.py
 * Running on http://127.0.0.1:5000/
 * Restarting with reloader
  
