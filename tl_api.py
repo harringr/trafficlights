@@ -9,6 +9,7 @@ api = Api(app)
 
 class TrafficLight(Resource):
     def create_data_structure(self,args):
+        # Put some data/structure checking in here?
         data = {
             'type': args['type'],
             'size_g': args['size_g'],
