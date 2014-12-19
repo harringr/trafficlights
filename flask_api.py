@@ -7,23 +7,6 @@ import generate_tl as tl
 app = Flask(__name__)
 api = Api(app)
 
-todos = {}
-
-class TodoSimple(Resource):
-    def get(self, todo_id):        
-        return {todo_id: todos[todo_id]}
-
-    def put(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('rate', type=int, help='Rate cannot be converted')
-        parser.add_argument('name', type=str)
-        args = parser.parse_args()
-        # todos[todo_id] = request.form['data']
-        print args['name']
-        print args['rate']
-        return {'rate': args['rate'], 'name': args['name']}
-        # return {d: todos[todo_id]}
-
 class TrafficLight(Resource):
     def create_data_structure(self,args):
         data = {
@@ -48,7 +31,7 @@ class TrafficLight(Resource):
         }
         return data
 
-    def put(self):
+    def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('type', type=str)
         parser.add_argument('size_g', type=int)
@@ -67,24 +50,7 @@ class TrafficLight(Resource):
 
         return {'tl_data': colours}
 
-# class GetBus(Resource):
-#   def get(self):
-#     page = gb.get_page()
-#     buses = gb.next_buses_json(page)
-#     next_bus = buses[0]
-#     return next_bus
-
-# class GetBuses(Resource):
-#   def get(self):
-#     page = gb.get_page()
-#     buses = gb.next_buses_json(page)
-#     return buses    
-
-api.add_resource(TodoSimple, '/')
-api.add_resource(TrafficLight, '/tl')
-# api.add_resource(TodoSimple, '/<string:todo_id>')
-# api.add_resource(GetBus, '/bus')
-# api.add_resource(GetBuses, '/buses')
+api.add_resource(TrafficLight, '/')
 
 if __name__ == '__main__':
     app.run(debug=True)
