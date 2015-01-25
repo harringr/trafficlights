@@ -14,7 +14,7 @@ def generate_single_tl(serving_value, hundred_value, serving_limit, upper_limit,
     if serving_value > serving_limit:
       return 'Red'
     else:
-      if hundred_value > serving_limit:
+      if hundred_value > upper_limit:
         return 'Red'
       elif hundred_value <= lower_limit:
         return 'Green'
