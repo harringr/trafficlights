@@ -67,7 +67,7 @@ def print_tl(tl_colours, labels=True):
 
 def define_limits():
 
-  # Dictionary with all limits for traffic light calculation
+    # Dictionary with all limits for traffic light calculation
     data = {
         'food': {
             'fat': {
