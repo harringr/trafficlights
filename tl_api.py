@@ -2,12 +2,14 @@
 
 from flask import Flask, request
 from flask.ext.restful import Resource, Api, reqparse
+
 import generate_tl as tl
 
 app = Flask(__name__)
 api = Api(app)
 
 class TrafficLight(Resource):
+
     def create_data_structure(self,args):
         # Put some data/structure checking in here?
         data = {
@@ -33,6 +35,7 @@ class TrafficLight(Resource):
         return data
 
     def post(self):
+
         parser = reqparse.RequestParser()
         parser.add_argument('type', type=str)
         parser.add_argument('size_g', type=int)
@@ -44,9 +47,17 @@ class TrafficLight(Resource):
         parser.add_argument('sugar_serving', type=float)
         parser.add_argument('salt_100', type=float)
         parser.add_argument('salt_serving', type=float)
+
+        # Get arguments / data from the API call
         args = parser.parse_args()
-        nutrition_data = tl.define_limits()
+
+        # Create new data structure to hold traffic light nutrition data
         food_data = self.create_data_structure(args)
+
+        # Define trafficlight limits (perhaps move to TL ) 
+        nutrition_data = tl.define_limits()
+
+        # Generate traffic light colour data
         colours = tl.generate_tl(nutrition_data, food_data)
 
         return {'tl_data': colours}
